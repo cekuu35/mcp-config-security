@@ -1,0 +1,11 @@
+﻿{
+  "name": "mcp-security-audit",
+  "version": "1.0.0",
+  "description": "Scan MCP (Model Context Protocol) client configs for leaked credentials and unsafe settings. Zero dependencies.",
+  "license": "MIT",
+  "bin": { "mcp-security-audit": "bin/mcpsec.js" },
+  "files": ["bin", "examples", "README.md"],
+  "engines": { "node": ">=18" },
+  "scripts": { "test": "node --test" },
+  "keywords": ["mcp", "security", "audit", "secrets", "model-context-protocol", "claude", "cursor"]
+}
