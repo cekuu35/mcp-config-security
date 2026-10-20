@@ -1,4 +1,8 @@
-# mcp-security-audit
+# mcp-config-security
+
+[![CI](https://github.com/cekuu35/mcp-config-security/actions/workflows/ci.yml/badge.svg)](https://github.com/cekuu35/mcp-config-security/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/mcp-config-security.svg)](https://www.npmjs.com/package/mcp-config-security)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Scan MCP (Model Context Protocol) client configuration files for leaked
 credentials and unsafe settings — before an agent process runs with them.
@@ -10,15 +14,20 @@ or `.mcp.json` and never look again. This tool reads those files locally and
 reports what would hurt if the file (or your machine) leaked.
 
 Zero dependencies. Reads nothing from the network. Never sends your config
-anywhere.
+anywhere. **Free, forever.**
 
 ## Quick start
 
 ```bash
-git clone https://github.com/cekuu35/mcp-security-audit
-cd mcp-security-audit
-node bin/mcpsec.js                 # scans default client config locations
-node bin/mcpsec.js path/to/config.json --json
+npx mcp-config-security                    # scans default client config locations
+npx mcp-config-security path/to/config.json --json
+```
+
+or install globally:
+
+```bash
+npm install -g mcp-config-security
+mcp-config-security
 ```
 
 Default locations scanned: Claude Desktop, Claude Code (`.claude.json`),
@@ -91,11 +100,20 @@ live config files (Claude Code, Cursor) and came back clean, because mine
 reference environment variables instead of literal values. That is the
 correct answer here — a clean result should be boring.
 
-## Related
+## The audit family
 
-- [supabase-rls-leak-demo](https://github.com/cekuu35/supabase-rls-leak-demo) — the same red/green approach for Supabase row-level security leaks
-- [Supabase RLS Audit Kit](https://cengokurtoglu.gumroad.com/l/supabase-rls-audit-kit?utm_source=github_repo&utm_medium=readme&utm_campaign=mcp_audit) — if the leaked key was a Supabase service_role, run the full audit against your database
-- [Hire me for a Supabase security audit (Upwork, from $99)](https://www.upwork.com/services/product/2083862107074689176?utm_source=github_repo&utm_medium=readme&utm_campaign=mcp_audit)
+Free, zero-dependency security auditors in the same shape — clone one, run
+it, get a straight answer:
+
+- [supabase-rls-leak-demo](https://github.com/cekuu35/supabase-rls-leak-demo) — red/green test fixture proving a Supabase row-level-security leak, and its one-file fix
+- [firebase-rules-audit](https://github.com/cekuu35/firebase-rules-audit) — static audit of Firestore & Storage security rules for open access
+- [n8n-workflow-audit](https://github.com/cekuu35/n8n-workflow-audit) — scan exported n8n workflow JSON for hardcoded credentials and unauthenticated webhooks
+
+## Support
+
+If this tool saved you from a real leak, you can
+[buy me a coffee](https://www.buymeacoffee.com/cenkkurtoglu) — completely
+optional. The tool is free, no features are locked, and no email is asked.
 
 ## License
 

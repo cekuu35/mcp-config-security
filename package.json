@@ -1,11 +1,15 @@
-﻿{
-  "name": "mcp-security-audit",
+{
+  "name": "mcp-config-security",
   "version": "1.0.0",
   "description": "Scan MCP (Model Context Protocol) client configs for leaked credentials and unsafe settings. Zero dependencies.",
   "license": "MIT",
-  "bin": { "mcp-security-audit": "bin/mcpsec.js" },
-  "files": ["bin", "examples", "README.md"],
+  "author": "Cenk Kurtoglu <cnkkurtoglu@gmail.com>",
+  "repository": { "type": "git", "url": "git+https://github.com/cekuu35/mcp-config-security.git" },
+  "homepage": "https://github.com/cekuu35/mcp-config-security#readme",
+  "bugs": "https://github.com/cekuu35/mcp-config-security/issues",
+  "bin": { "mcp-config-security": "bin/mcpsec.js" },
+  "files": ["bin", "examples", "README.md", "LICENSE"],
   "engines": { "node": ">=18" },
   "scripts": { "test": "node --test" },
-  "keywords": ["mcp", "security", "audit", "secrets", "model-context-protocol", "claude", "cursor"]
+  "keywords": ["mcp", "security", "audit", "secrets", "secrets-scanner", "model-context-protocol", "claude", "cursor", "windsurf"]
 }
