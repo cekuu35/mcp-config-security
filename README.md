@@ -110,6 +110,7 @@ it, get a straight answer:
 - [n8n-workflow-audit](https://github.com/cekuu35/n8n-workflow-audit) — scan exported n8n workflow JSON for hardcoded credentials
 - [github-actions-audit](https://github.com/cekuu35/github-actions-audit) — pwn requests, script injection and unpinned actions in CI
 - [supabase-service-role-scanner](https://github.com/cekuu35/supabase-service-role-scanner) — scan a project for Supabase service_role keys exposed to the browser and unauthenticated webhooks
+- [stripe-webhook-audit](https://github.com/cekuu35/stripe-webhook-audit) — Stripe webhook handlers that trust events without signature verification
 
 ## Support
 
