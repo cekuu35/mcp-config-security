@@ -182,12 +182,26 @@ function scanServer(server, def) {
 
 const SERVER_KEYS = ['mcpServers', 'servers'];
 
+function tolerantParse(raw) {
+  const stripped = String(raw)
+    .replace(/^\uFEFF/, '')
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/(^|\s)\/\/[^\n]*/g, (m, p1) => p1)
+    .replace(/,\s*([}\]])/g, '$1');
+  return JSON.parse(stripped);
+}
+
 function scanConfig(filePath, raw) {
   let config;
+  const cleaned = String(raw).replace(/^\uFEFF/, '');
   try {
-    config = JSON.parse(String(raw).replace(/^\uFEFF/, ''));
+    config = JSON.parse(cleaned);
   } catch (e) {
-    return { file: filePath, error: 'not valid JSON: ' + e.message, findings: [] };
+    try {
+      config = tolerantParse(cleaned);
+    } catch (e2) {
+      return { file: filePath, error: 'not valid JSON: ' + e.message, findings: [] };
+    }
   }
   let serverMap = null;
   for (const key of SERVER_KEYS) {
@@ -221,7 +235,11 @@ function defaultPaths() {
     path.join(home, '.mcp.json'),
     path.join(home, '.cursor', 'mcp.json'),
     path.join(home, '.codeium', 'windsurf', 'mcp_config.json'),
+    path.join(home, '.vscode', 'mcp.json'),
     path.join(process.cwd(), '.mcp.json'),
+    path.join(process.cwd(), '.vscode', 'mcp.json'),
+    path.join(process.cwd(), '.devcontainer', 'devcontainer.json'),
+    path.join(process.cwd(), 'devcontainer.json'),
   ];
   return [...new Set(candidates)].filter((p) => fs.existsSync(p));
 }
